@@ -1,0 +1,27 @@
+\documentclass[11pt, a4paper]{article}
+
+% for links, metadata and bookmarks
+\usepackage[
+    pdftitle={John Doe's CV},
+    pdfauthor={John Doe},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref}
+
+\usepackage{Sty/settings}
+
+\begin{document}
+    \input{Tex/Header.tex}
+
+    \vspace{1 pt - 0.25 cm}
+
+    \input{Tex/Summary.tex}
+    
+    \input{Tex/Experience.tex}
+
+    \input{Tex/Education.tex}
+
+    \input{Tex/Technologies.tex}
+
+\end{document}
