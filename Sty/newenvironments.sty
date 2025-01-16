@@ -1,0 +1,43 @@
+% new environment for highlights
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep = 0 cm,
+        parsep = 0 cm,
+        partopsep = 0pt,
+        itemsep = 1pt,
+        leftmargin = 0 cm + 15pt
+    ]
+}{
+    \end{itemize}
+} 
+
+% new environment for one column entries
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0 cm + 0.00001 cm
+    }{
+        0 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+}
+
+% new environment for two column entries
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+    \vspace{0.1 cm}
+}
+
+% new environment for the header
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+}

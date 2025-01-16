@@ -1,0 +1,34 @@
+\documentclass[11pt, a4paper]{article}
+
+% for links, metadata and bookmarks
+\usepackage[
+    pdftitle={En Nicolas Beraldo CV},
+    pdfauthor={Nicolas Beraldo},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref}
+
+\usepackage{Sty/settings}
+\usepackage{Sty/newenvironments}
+\usepackage{Sty/newcommands}
+
+\begin{document}
+    \input{Tex/En/Header.tex}
+
+    \vspace{1 pt - 0.5 cm}
+
+    \input{Tex/En/Summary.tex}
+
+    \vspace{1 pt - 0.35 cm}
+    
+    \input{Tex/En/Experience.tex}
+
+    \vspace{1 pt - 1.25 cm}
+
+    \input{Tex/En/Education.tex}
+
+    \vspace{1 pt - 0.75 cm}
+
+    \input{Tex/En/Technologies.tex}
+\end{document}

@@ -1,5 +1,6 @@
 \usepackage[dvipsnames]{xcolor} % for coloring text
 \definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+\definecolor{DetailsColor}{RGB}{140, 0, 170} % define primary color
 
 % for adjusting page geometry
 \usepackage[
@@ -12,6 +13,9 @@
     % showframe % for debugging 
 ]{geometry}
 
+\usepackage{tikz} % for drawing shapes
+\usetikzlibrary{calc}
+\usepackage{graphicx} % for including images
 \usepackage{titlesec} % for customizing section titles
 \usepackage{array} % tabularx requires this
 \usepackage{tabularx} % for making tables with fixed width columns
@@ -23,19 +27,15 @@
 \usepackage{bookmark} % for bookmarks
 \usepackage{changepage} % for one column entries (adjustwidth environment)
 \usepackage{paracol} % for two and three column entries
-\usepackage{ifthen} % for conditional statements
 \usepackage{needspace} % for avoiding page brake right after the section title
-\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
 \usepackage{charter}
 
 % Ensure that generate pdf is machine readable/ATS parsable:
-\ifPDFTeX
-    \input{glyphtounicode}
-    \pdfgentounicode=1
-    \usepackage[T1]{fontenc}
-    \usepackage[utf8]{inputenc}
-    \usepackage{lmodern}
-\fi
+\input{glyphtounicode}
+\pdfgentounicode=1
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
 
 % Some settings:
 \raggedright
@@ -47,8 +47,9 @@
 \setlength{\columnsep}{0.15cm} % set column seperation
 \pagenumbering{gobble} % no page numbering
 
-\titleformat{\section}
-    {\needspace{4\baselineskip}\bfseries\large}
+\titleformat
+    {\section}
+    {\needspace{4\baselineskip}\bfseries\large\color{DetailsColor}}
     {}
     {0pt}
     {}
@@ -56,67 +57,9 @@
 
 % section title spacing
 \titlespacing{\section}{
-    -1pt % left space
+    -2pt % left space
 }{
-    0.3 cm % top space
+    0.5 cm % top space
 }{
-    0.2 cm % bottom space
+    0.25 cm % bottom space
 }
-
-% custom bullet points
-\renewcommand\labelitemi{
-    $\vcenter{\hbox{\small$\bullet$}}$
-}
-
-% new environment for highlights
-\newenvironment{highlights}{
-    \begin{itemize}[
-        topsep = 0 cm,
-        parsep = 0 cm,
-        partopsep = 0pt,
-        itemsep = 0pt,
-        leftmargin = 0 cm + 15pt
-    ]
-}{
-    \end{itemize}
-} 
-
-% new environment for one column entries
-\newenvironment{onecolentry}{
-    \begin{adjustwidth}{
-        0 cm + 0.00001 cm
-    }{
-        0 cm + 0.00001 cm
-    }
-}{
-    \end{adjustwidth}
-}
-
-% new environment for two column entries
-\newenvironment{twocolentry}[2][]{
-    \onecolentry
-    \def\secondColumn{#2}
-    \setcolumnwidth{\fill, 4.5 cm}
-    \begin{paracol}{2}
-}{
-    \switchcolumn \raggedleft \secondColumn
-    \end{paracol}
-    \endonecolentry
-}
-
-% new environment for the header
-\newenvironment{header}{
-    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
-}{
-    \par\kern\topsep
-}
-
-\newcommand{\AND}{\unskip
-        \cleaders\copy\ANDbox\hskip\wd\ANDbox
-        \ignorespaces
-    }
-    \newsavebox\ANDbox
-    \sbox\ANDbox{$|$}
-
-% save the original href command in a new command:
-\let\hrefWithoutArrow\href

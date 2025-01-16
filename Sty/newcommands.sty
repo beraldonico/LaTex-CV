@@ -1,0 +1,14 @@
+\newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{$|$}
+
+\renewcommand{\labelitemi}{$\color{DetailsColor}{\bullet}$}
+
+\newcommand{\linkedlist}[1]{
+  \begin{tikzpicture}[remember picture]%
+    \node (#1) [DetailsColor,circle,fill,inner sep=2pt]{};
+  \end{tikzpicture}%
+}
