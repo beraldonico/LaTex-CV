@@ -1,43 +1,95 @@
-% new environment for highlights
-\newenvironment{highlights}{
-    \begin{itemize}[
-        topsep = 0 cm,
-        parsep = 0 cm,
-        partopsep = 0pt,
-        itemsep = 1pt,
-        leftmargin = 0 cm + 15pt
-    ]
-}{
-    \end{itemize}
-} 
+% Define a new environment named "Header" that takes five arguments
+\newenvironment{Header}[5]{
+    % Remove extra spacing and center the content
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5} 
+    
+    % Store the first argument (#1) as the image path
+    \def\ImagePath{#1} 
+    
+    % Check if an image path is provided
+    \IfStrEq{\ImagePath}{}{} { % If empty, skip the image setup; otherwise, create the two-column layout
+        \setcolumnwidth{\fill, 4 cm} % Define the width of the second column (for the image)
+        \begin{paracol}{2} % Start a two-column layout
+            \switchcolumn % Move to the second column (image column)
+            \raggedleft % Align image to the right side
 
-% new environment for one column entries
-\newenvironment{onecolentry}{
-    \begin{adjustwidth}{
-        0 cm + 0.00001 cm
-    }{
-        0 cm + 0.00001 cm
+            % Create a circular clipped image using TikZ
+            \begin{tikzpicture}
+                \clip (0,0) circle (1.5 cm); % Define a circular clipping area
+                \node[anchor=center] at (0,0) {\includegraphics[scale=0.15]{\ImagePath}}; % Insert the image
+            \end{tikzpicture}
+
+            \switchcolumn % Move back to the first column (text column)
+            \raggedright % Align text to the left
+    }
+
+    % Set the main title with the "DetailsColor" color and a large font size
+    \color{DetailsColor}
+    \fontsize{30 pt}{30 pt}\selectfont \textbf{#2}\\
+    
+    % Set the subtitle with "primaryColor" and a smaller font size
+    \color{primaryColor}
+    \fontsize{15 pt}{15 pt}\selectfont #3
+    
+    \normalsize % Return to normal text size
+
+    % Iterate through the list of skills (argument #4), adding a separator unless it's the last item
+    \foreach \skill [count=\i] in {#4} {
+        \mbox{\skill} % Display the skill
+        \ifnum \i < #5 \AND \fi % Add \AND separator unless it's the last skill
     }
 }{
-    \end{adjustwidth}
+    % If an image was used, end the two-column layout
+    \IfStrEq{\ImagePath}{}{}{
+        \end{paracol} % Close the paracol environment
+        \justifying % Justify the text after the header
+        \setcolumnwidth{\textwidth} % Reset the column width to the full text width
+    }
 }
 
-% new environment for two column entries
-\newenvironment{twocolentry}[2][]{
-    \onecolentry
-    \def\secondColumn{#2}
-    \setcolumnwidth{\fill, 4.5 cm}
-    \begin{paracol}{2}
+% Define a new environment named "SkillHighlights"
+\newenvironment{SkillHighlights}{
+    \raggedright % Align text to the left
+    \setcolumnwidth{0.5\textwidth} % Set the width of each column to half the page width
+    \begin{paracol}{2} % Start a two-column layout
+        \begin{itemize}[ % Customize the itemize environment
+            topsep = 0pt, % Remove top spacing
+            parsep = 0pt, % Remove paragraph spacing
+            partopsep = 0pt, % Remove part paragraph spacing
+            itemsep = 0pt, % Remove space between items
+            leftmargin = 7.5pt,  % Define left margin
+            labelsep = 2.5pt, % Define space between bullet and text
+            label = {$\color{DetailsColor}{\bullet}$} % Define bullet style with custom color
+        ]
 }{
-    \switchcolumn \raggedleft \secondColumn
-    \end{paracol}
-    \endonecolentry
-    \vspace{0.1 cm}
+        \end{itemize} % End the itemize environment
+    \end{paracol} % End the two-column layout
+    \setcolumnwidth{\textwidth} % Reset the column width to full page width
+    \justifying % Justify the text after the skill highlights
 }
 
-% new environment for the header
-\newenvironment{header}{
-    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+\newenvironment{Experience}[2]{  % Define a new environment "Experience" that takes two arguments (#1 and #2)
+	\setcolumnwidth{\fill, 4cm}  % Set the width of the first column to fill the available space, but restrict the width to 4 cm
+	\begin{paracol}{2}  % Begin a two-column layout using the paracol environment
+		\raggedright  % Align text in the first column to the left (ragged right)
+		#1  % Place the first argument (#1) in the first column
+		\switchcolumn  % Switch to the second column
+		\raggedleft  % Align text in the second column to the right (ragged left)
+		#2\\  % Place the second argument (#2) in the second column and add a line break at the end
 }{
-    \par\kern\topsep
+	\end{paracol}  % End the paracol environment
+	\justifying  % Reset text alignment to justify the following text (after the environment)
 }
+
+\newenvironment{highlights}{  % Define a new environment "highlights" to create a custom itemized list
+	\begin{itemize}[  % Begin an itemize list with custom spacing and settings
+		topsep = 0pt,  % Set the space above the list to 0pt
+		parsep = 0pt,  % Set the space between paragraphs in the list to 0pt
+		partopsep = 0pt,  % Set the space between the first item and the preceding text to 0pt
+		itemsep = 0pt,  % Set the space between list items to 0pt
+		leftmargin = 12.5pt,  % Set the left margin to 12.5pt for the list
+		labelsep = 2.5pt  % Set the space between the label and the text to 2.5pt
+	]
+}{
+	\end{itemize}  % End the itemize list
+} 

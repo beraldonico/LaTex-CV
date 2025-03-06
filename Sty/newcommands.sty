@@ -1,14 +1,21 @@
-\newcommand{\AND}{\unskip
-        \cleaders\copy\ANDbox\hskip\wd\ANDbox
-        \ignorespaces
-    }
-    \newsavebox\ANDbox
-    \sbox\ANDbox{$|$}
+\newsavebox\ANDbox  % Create a new savebox to store the symbol that represents the "AND" (pipe character)
+\sbox\ANDbox{$|$}  % Save the pipe symbol "|" into the ANDbox, which will be reused later
 
-\renewcommand{\labelitemi}{$\color{DetailsColor}{\bullet}$}
+\newcommand{\AND}  % Define a new command "\AND" to insert the AND symbol with specific formatting
+{	
+	\unskip  % Remove any extra space before the AND symbol (to avoid unwanted spacing)
+	\cleaders\copy\ANDbox\hskip\wd\ANDbox  % Repeatedly copy the AND symbol and add horizontal space based on its width
+	\ignorespaces  % Ignore spaces after the AND symbol, ensuring the next content starts directly after it
+}
 
-\newcommand{\linkedlist}[1]{
-  \begin{tikzpicture}[remember picture]%
-    \node (#1) [DetailsColor,circle,fill,inner sep=2pt]{};
-  \end{tikzpicture}%
+\newcommand{\linkedlist}[1]{  % Define a new command "\linkedlist" that accepts one argument (#1)
+    \begin{tikzpicture}[remember picture]  % Begin a TikZ picture environment and allow references to other elements in the page (remember picture)
+        \node (#1) % - Name the node using the argument #1 (so it can be referenced later)
+		[  % Begin node options for styling
+			DetailsColor, % - Use the previously defined "DetailsColor" for the node color
+			circle, % - Set the shape of the node to a circle
+			fill, % - Fill the circle with the specified color
+			inner sep=1.5pt % - Set the inner separation to 1.5pt for padding inside the node
+		]{};  % Empty node content
+    \end{tikzpicture}  % End the TikZ picture environment
 }

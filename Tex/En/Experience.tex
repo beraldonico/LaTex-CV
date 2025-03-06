@@ -1,63 +1,52 @@
 \section{Experience}
-	\begin{itemize}[noitemsep, left=0pt]
-		\item[\linkedlist{a}] {
-			\begin{twocolentry}{04/2022 - 06/2024}
-				\textbf{IT Fund Analyst}, BTG Pactual
-			\end{twocolentry}
-			
-			\begin{onecolentry}
-				\begin{highlights}
-					\item Led the development of a Full-Stack system (C\#, React, MySQL, SQL Server, and RabbitMQ) for report management, ensuring contractual compliance and mitigating financial risks related to adding a fund manager to the company's portfolio.
-					\item Modernized legacy systems using microservices (C\#, MySQL, RabbitMQ), increasing the scalability and operational efficiency of fund calculation systems by 40\%.
-					\item Developed and executed unit and integration tests, ensuring continuous quality through CI/CD pipelines integration.
-					\item Collaborated with business teams to maintain and enhance VB- and SQL-based systems, ensuring service quality and preventing rework.
-					\item Managed Excel macros and SQL queries for 60\% of offshore capital flow, ensuring efficiency and accuracy.
-				\end{highlights}
-			\end{onecolentry}
+	\begin{itemize}[noitemsep, left=0pt, labelsep = 0pt]
+		\item[\linkedlist{Work Experience 1}] { % use \linkedlist{label} to link this item to the next one
+			\begin{Experience} % use the Experience environment to create a new experience using especial formatting
+				{\textbf{IT Analyst}, BTG Pactual, São Paulo, SP, Brazil}
+				{04/2022 - 06/2024}
+			\end{Experience} 
+			 
+			\begin{highlights}
+				\item Led the development of a Full-Stack system (C\#, React, MySQL, SQL Server, and RabbitMQ) for report management, ensuring contractual compliance and mitigating financial risks associated with integrating a new fund manager to the company's portfolio.
+				\item Led the modernization of the reporting system, transitioning from SQL procedures to a microservices architecture, resulting in a 50\% reduction in execution time and enabling parallel report generation.
+				\item Modernized legacy systems using microservices (C\#, MySQL, RabbitMQ), improving system scalability and operational efficiency of fund calculation systems by 40\%, while also enabling automated processes.
+				\item Developed and executed unit and integration tests, ensuring continuous quality through CI/CD pipeline integration, and achieved 100\% code coverage for the domain logic.
+				\item Analyzed system performance using Datadog to optimize cost efficiency while balancing availability and scalability, leading to a 30\% reduction in system costs.
+				\item Collaborated with business teams to maintain and enhance VB- and SQL-based systems, ensuring service quality and avoiding rework for the business teams.
+				\item Managed Excel macros and SQL queries for 60\% of offshore capital flow, ensuring efficiency and accuracy.
+			\end{highlights} 
 		}
-		\item[\linkedlist{b}] {
-			\begin{twocolentry}{05/2021 - 04/2022}
-				\textbf{IT Fund Intern}, BTG Pactual
-			\end{twocolentry}
+		
+		\item[\linkedlist{Work Experience 2}] {
+			\begin{Experience}
+				{\textbf{IT Intern}, BTG Pactual, São Paulo, SP, Brazil}
+				{05/2021 - 04/2022}
+			\end{Experience}
 			
-			\begin{onecolentry}
-				\begin{highlights}
+			\begin{highlights}
 					\item Implemented improvements in Excel macros and Access/MySQL databases, optimizing processing times by 60\%.
 					\item Initiated the development and implementation of unit tests in C\#, contributing to service quality.
-				\end{highlights}
-			\end{onecolentry}
+					\item Developed automation scripts to handle code changes, reducing the time spent on simple link update tasks by 80\%.
+			\end{highlights}
 		}
 
-		\item[\linkedlist{c}] {
-			\begin{twocolentry}{01/2021 - 05/2021}
-				\textbf{IT Automation Intern}, BTG Pactual
-			\end{twocolentry}
+		\item[\linkedlist{Work Experience 3}] {
+			\begin{Experience}
+				{\textbf{Automation Intern}, BTG Pactual, São Paulo, SP, Brazil}
+				{01/2021 - 05/2021}
+			\end{Experience}
 			
-			\begin{onecolentry}
-				\begin{highlights}
-					\item Developed UiPath automations, reducing repetitive task execution by 25 hours daily.
-					\item Created a Teams bot for web scraping and automated news delivery, optimizing internal communication and reducing the time spent searching for relevant information.
-				\end{highlights}
-			\end{onecolentry}
-		}
-
-		\item[\linkedlist{d}] {
-			\begin{twocolentry}{01/2019 - 01/2020}
-				\textbf{Volunteer Researcher}, Lab of Software and Hardware Integration - UFSC
-			\end{twocolentry}
-			
-			\begin{onecolentry}
-				\begin{highlights}
-					\item Researched the feasibility of the uDev system using Sigfox technology, developing base code for testing.
-					\item Conducted field tests, producing reports on signal quality and system feasibility.
-				\end{highlights}
-			\end{onecolentry}
+			\begin{highlights}
+					\item Developed RPA automations, reducing the execution time of repetitive tasks by 25 hours daily.
+					\item Created a Teams bot for web scraping and automated news delivery, optimizing communication and reducing the time spent searching for relevant information.
+			\end{highlights}
 		}
 	\end{itemize}
 
-	\begin{tikzpicture}[remember picture,overlay]
-		\draw[gray] ($(a)!0!(b)$) -- ($(a)!1!(b)$);
-		\draw[gray] ($(b)!0!(c)$) -- ($(b)!1!(c)$);
-		\draw[gray] ($(c)!0!(d)$) -- ($(c)!1!(d)$);
+	% draw line between the items, need to add a new draw line for each new item
+	\vspace{-\baselineskip}
+	\begin{tikzpicture}[remember picture, overlay]
+		\draw[gray] (Work Experience 1) -- (Work Experience 2);
+		\draw[gray] (Work Experience 2) -- (Work Experience 3);
 	\end{tikzpicture}
-
+	\vspace{-\baselineskip}

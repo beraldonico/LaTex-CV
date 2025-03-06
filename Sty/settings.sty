@@ -1,65 +1,53 @@
-\usepackage[dvipsnames]{xcolor} % for coloring text
-\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
-\definecolor{DetailsColor}{RGB}{140, 0, 170} % define primary color
+\usepackage[dvipsnames]{xcolor}  % Load xcolor package for color management
+\definecolor{primaryColor}{RGB}{0, 0, 0}  % Define primary color as black
+\definecolor{DetailsColor}{RGB}{140, 0, 170}  % Define details color, change as desired
 
-% for adjusting page geometry
-\usepackage[
-    ignoreheadfoot, % set margins without considering header and footer
-    top = 1 cm, % seperation between body and page edge from the top
-    bottom = 1 cm, % seperation between body and page edge from the bottom
-    left = 1.5 cm, % seperation between body and page edge from the left
-    right = 1.5 cm, % seperation between body and page edge from the right
-    footskip = 0 cm, % seperation between body and footer
-    % showframe % for debugging 
+\usepackage[  % Load geometry package for controlling page layout and margins
+	ignoreheadfoot,  % Ignore the space for header and footer
+	top = 1 cm,  % Set the top margin
+	bottom = 1 cm,  % Set the bottom margin
+	left = 1.5 cm,  % Set the left margin
+	right = 1.5 cm,  % Set the right margin
+	footskip = 0 cm,  % Set footskip (remove extra space below)
 ]{geometry}
 
-\usepackage{tikz} % for drawing shapes
-\usetikzlibrary{calc}
-\usepackage{graphicx} % for including images
-\usepackage{titlesec} % for customizing section titles
-\usepackage{array} % tabularx requires this
-\usepackage{tabularx} % for making tables with fixed width columns
-\usepackage{enumitem} % for customizing lists
-\usepackage{fontawesome5} % for using icons
-\usepackage{amsmath} % for math
-\usepackage[pscoord]{eso-pic} % for floating text on the page
-\usepackage{calc} % for calculating lengths
-\usepackage{bookmark} % for bookmarks
-\usepackage{changepage} % for one column entries (adjustwidth environment)
-\usepackage{paracol} % for two and three column entries
-\usepackage{needspace} % for avoiding page brake right after the section title
-\usepackage{charter}
+\usepackage{tikz}  % Load TikZ package for creating graphics in LaTeX
+\usetikzlibrary{calc}  % Load TikZ library for calculation and positioning
+\usepackage{titlesec}  % Load titlesec package to customize section title formatting
+\usepackage{enumitem}  % Load enumitem package to customize lists (itemize, enumerate)
+\usepackage{fontawesome5}  % Load FontAwesome5 package to use icons in the document
+\usepackage{paracol}  % Load paracol package to manage multiple columns
+\usepackage{xstring}  % Load xstring package for string manipulation in LaTeX
+\usepackage{pgffor}  % Load pgffor package to create loops
+\usepackage{charter}  % Load Charter font family for better serif font style
 
-% Ensure that generate pdf is machine readable/ATS parsable:
-\input{glyphtounicode}
-\pdfgentounicode=1
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{lmodern}
+\input{glyphtounicode}  % Include a file for converting glyphs to Unicode
+\pdfgentounicode=1  % Ensure PDF outputs Unicode characters
+\usepackage[T1]{fontenc}  % Set font encoding to T1 for better character representation
+\usepackage[utf8]{inputenc}  % Use UTF-8 encoding for input text
+\usepackage{lmodern}  % Use the Latin Modern font (a modern version of Computer Modern)
+\usepackage[none]{hyphenat}  % Disable hyphenation to avoid unwanted word breaks
+\usepackage{ragged2e}  % Load ragged2e to enable text justification
+\justifying  % Enable text justification globally in the document
 
-% Some settings:
-\raggedright
-\AtBeginEnvironment{adjustwidth}{\partopsep 0pt} % remove space before adjustwidth environment
-\pagestyle{empty} % no header or footer
-\setcounter{secnumdepth}{0} % no section numbering
-\setlength{\parindent}{0pt} % no indentation
-\setlength{\topskip}{0pt} % no top skip
-\setlength{\columnsep}{0.15cm} % set column seperation
-\pagenumbering{gobble} % no page numbering
+\pagestyle{empty}  % Set page style to empty (no headers or footers)
+\setcounter{secnumdepth}{0}  % Set section numbering depth to 0 (no numbering for sections)
+\setlength{\parindent}{0pt}  % Set paragraph indentation to 0 (no indentation)
+\setlength{\topskip}{0pt}  % Set the top space (vertical space above the first line) to 0pt
+\setlength{\columnsep}{0pt}  % Set the column separation to 0pt (no space between columns)
 
-\titleformat
-    {\section}
-    {\needspace{4\baselineskip}\bfseries\large\color{DetailsColor}}
-    {}
-    {0pt}
-    {}
-    [\vspace{1pt}\titlerule]
+\titleformat  % Define the format for section titles
+	{\section}  % Apply to sections
+	{\bfseries\Large\color{DetailsColor}}  % Bold, large size, and DetailsColor
+	{}  % No label before the section title
+	{}  % No extra space between label and title
+	{}  % No title formatting (default font size and style)
+	[\titlerule]  % Add a rule (line) under the section title
 
-% section title spacing
-\titlespacing{\section}{
-    -2pt % left space
+\titlespacing{\section}{  % Adjust spacing before and after section titles
+	0pt  % No space before section title
 }{
-    0.5 cm % top space
+	0pt  % No space after section title (before the content starts)
 }{
-    0.25 cm % bottom space
+	5pt  % Space after section title (between title and content)
 }
