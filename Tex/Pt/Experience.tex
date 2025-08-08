@@ -1,6 +1,17 @@
 \section{Experiência}
 	\begin{itemize}[noitemsep, left=0pt, labelsep = 0pt]
-		\item[\linkedlist{Experiencia profissional 1}] { % use \linkedlist para linkar este item com o próximo
+		\item[\linkedlist{Experiencia profissional 4}] { % use \linkedlist{label} to link this item to the next one
+			\begin{Experience} % use the Experience environment to create a new experience using especial formatting
+				{\textbf{Engenheiro de Desenvolvimento de Software Pleno}, Wex, Remote}
+				{06/2025 - presente}
+			\end{Experience} 
+			 
+			\begin{highlights}
+				\item Desenvolvendo e mantendo serviços utilizando C\# e .NET para o Health Saving Account Americano.
+			\end{highlights} 
+		}
+		
+		\item[\linkedlist{Experiencia profissional 3}] { % use \linkedlist para linkar este item com o próximo
 			\begin{Experience} % use o ambiente Experience para criar uma nova experiência com formatação especial
 				{\textbf{Analista de TI}, BTG Pactual, São Paulo, SP, Brasil}
 				{04/2022 - 06/2024}
@@ -30,7 +41,7 @@
 			\end{highlights}
 		}
 
-		\item[\linkedlist{Experiencia profissional 3}] {
+		\item[\linkedlist{Experiencia profissional 1}] {
 			\begin{Experience}
 				{\textbf{Estagiário de Automação}, BTG Pactual, São Paulo, SP, Brasil}
 				{01/2021 - 05/2021}
@@ -48,5 +59,6 @@
 	\begin{tikzpicture}[remember picture,overlay]
 		\draw[gray] (Experiencia profissional 1) -- (Experiencia profissional 2);
 		\draw[gray] (Experiencia profissional 2) -- (Experiencia profissional 3);
+		\draw[gray] (Experiencia profissional 3) -- (Experiencia profissional 4);
 	\end{tikzpicture}
 	\vspace{-\baselineskip}

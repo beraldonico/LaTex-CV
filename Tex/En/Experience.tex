@@ -1,6 +1,17 @@
 \section{Experience}
 	\begin{itemize}[noitemsep, left=0pt, labelsep = 0pt]
-		\item[\linkedlist{Work Experience 1}] { % use \linkedlist{label} to link this item to the next one
+		\item[\linkedlist{Work Experience 4}] { % use \linkedlist{label} to link this item to the next one
+			\begin{Experience} % use the Experience environment to create a new experience using especial formatting
+				{\textbf{Mid Level Software Development Engineer}, Wex, Remote}
+				{06/2025 - present}
+			\end{Experience} 
+			 
+			\begin{highlights}
+				\item Developing and maintaining services using C\# and .NET for Health Saving Account business.
+			\end{highlights} 
+		}
+		
+		\item[\linkedlist{Work Experience 3}] { % use \linkedlist{label} to link this item to the next one
 			\begin{Experience} % use the Experience environment to create a new experience using especial formatting
 				{\textbf{IT Analyst}, BTG Pactual, São Paulo, SP, Brazil}
 				{04/2022 - 06/2024}
@@ -30,7 +41,7 @@
 			\end{highlights}
 		}
 
-		\item[\linkedlist{Work Experience 3}] {
+		\item[\linkedlist{Work Experience 1}] {
 			\begin{Experience}
 				{\textbf{Automation Intern}, BTG Pactual, São Paulo, SP, Brazil}
 				{01/2021 - 05/2021}
@@ -48,5 +59,6 @@
 	\begin{tikzpicture}[remember picture, overlay]
 		\draw[gray] (Work Experience 1) -- (Work Experience 2);
 		\draw[gray] (Work Experience 2) -- (Work Experience 3);
+		\draw[gray] (Work Experience 3) -- (Work Experience 4);
 	\end{tikzpicture}
 	\vspace{-\baselineskip}
